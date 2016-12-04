@@ -1,0 +1,12 @@
+---
+- hosts: 54.213.210.125 
+  user: ec2-user 
+  become: yes
+
+  tasks:
+  - name: installing Http Server
+    yum: name=httpd state=present
+  - name: Copy Index HTML
+    copy: src=index.html dest=/var/www/html
+  - name: Start httpd Service
+    service: name=httpd state=started

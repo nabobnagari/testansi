@@ -1,0 +1,15 @@
+---
+- hosts: 54.213.210.125 
+  user: ec2-user 
+  become: yes
+
+  tasks:
+  - name: jboss
+    file: 
+      path: /home/ec2-user/jbs64
+      mode: u=rwX,g=rX,o=rX
+      recurse: yes 
+    shell: standalone.sh &
+    args:
+       chdir: /home/ec2-user/jbs64/jboss-eap-6.4/bin 
+    
